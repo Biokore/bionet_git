@@ -27,6 +27,7 @@ private:
 	float m_error;
 	
 	float m_alpha;
+	int m_epochs;
 	int m_iterations;
 	
 	
@@ -42,10 +43,9 @@ public:
 	void brainRetroPropagate(const std::vector<float> &outputsArray);
 	void refitWeights(const std::vector<float> &inputsArray);
 	
-	float checkError(const std::vector<std::vector<float> > &inputsArray, const std::vector<std::vector<float> > &outputsArray);
-	int getMax(const std::vector<float> &testArray);
 	
 	
+	//// GETTERS PART ////
 	
 	std::string listBrain(void) const;
 	std::string listLayer(const int l) const;
@@ -53,6 +53,18 @@ public:
 	std::vector<float> getBrainOutput() const;
 	float getBrainOutput(const int k) const;
 	float getDelta(const int l, const int k) const;
+	
+	
+	
+	//// TRAINING PART ////
+	
+	void setTrainConf(const int iterations, const int epochs, const float alpha);
+	void loadTrainConf(void);
+	
+	void trainOnPop(const std::vector<std::vector<float> > &inputPop, const std::vector<std::vector<float> > &outputPop);
+	float checkError(const std::vector<std::vector<float> > &inputsArray, const std::vector<std::vector<float> > &outputsArray);
+	int getMax(const std::vector<float> &testArray);
+	
 	
 };
 

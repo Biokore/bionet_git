@@ -3,7 +3,7 @@ GCCPARAMS = -W -Wall -Wextra -Werror -O3
 LDPARAMS = -lm -O3
 LDSFML = -lsfml-graphics -lsfml-window -lsfml-system
 
-OBJECTS = layer.o brain.o getlayer.o getbrain.o fsys.o main.o
+OBJECTS = layer.o brain.o getlayer.o getbrain.o fsys.o btrain.o main.o
 EXEC = brain.ex
 
 

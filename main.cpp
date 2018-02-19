@@ -37,12 +37,8 @@ int main(/*int argc, char **argv*/)
 	int tmp(0);
 	for(int it = 0; it < 20; it++)
 	{
-		for(int i = 0; i < 60000; i++)
-		{
-			obrain.brainPropagate(trFile.getInputsArray(i));
-			obrain.brainRetroPropagate(trFile.getOutputsArray(i));
-			obrain.refitWeights(trFile.getInputsArray(i));
-		}
+		
+		obrain.trainOnPop(trFile.getInputsArray(), trFile.getOutputsArray());
 		
 		tmp = rand()%10000;
 		
