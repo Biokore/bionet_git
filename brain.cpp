@@ -104,7 +104,7 @@ void brain::brainRetroPropagate(const std::vector<float> &outputsArray)
 
 void brain::refitWeights(const std::vector<float> &inputsArray)
 {
-	m_layersVector[0].refitWeights(inputsArray);
+	m_layersVector[0].refitWeights(inputsArray, m_alpha);
 	
 	for(int l = 1; l < m_layersVectorSize; l++)
 	{
