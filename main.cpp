@@ -35,20 +35,22 @@ int main(/*int argc, char **argv*/)
 	std::cout << "\n\n";
 	
 	int tmp(0);
+	
 	for(int it = 0; it < 20; it++)
 	{
 		
 		obrain.trainOnPop(trFile.getInputsArray(), trFile.getOutputsArray());
 		
 		tmp = rand()%10000;
-		
-		teFile.printPic(tmp);
 		obrain.brainPropagate(teFile.getInputsArray(tmp));
-		std::cout << obrain.getMax(obrain.getBrainOutput()) << std::endl;
+		std::cout << "calculated : " << obrain.getMax(obrain.getBrainOutput()) << std::endl;
+		std::cout << "real : " << obrain.getMax(teFile.getOutputsArray(tmp)) << std::endl;
 		std::cout << "error = " << obrain.checkError(teFile.getInputsArray(), teFile.getOutputsArray()) << std::endl;
 		
-		
 	}
+	
+	tmp = rand()%10000;
+	teFile.printPic(tmp);
 	
 	
 	std::cout << "\n\n";
