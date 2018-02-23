@@ -24,8 +24,9 @@ int main(/*int argc, char **argv*/)
 	
 	brain obrain(784);
 	
-	obrain.addLayer(RELU, 150, -0.5);
-	obrain.addLayer(HTAN, 50, -0.5);
+	obrain.addLayer(RELU, 180, -0.5);
+	obrain.addLayer(SIGMOID, 80, -0.5);
+	obrain.addLayer(HTAN, 40, -0.5);
 	obrain.addLayer(SIGMOID, 10, +0.5);
 	
 	std::cout << obrain.listBrain() << '\n';
@@ -38,7 +39,7 @@ int main(/*int argc, char **argv*/)
 	
 	for(int it = 0; it < 20; it++)
 	{
-		
+		std::cout << "Iteration : " << it << '\n';
 		obrain.trainOnPop(trFile.getInputsArray(), trFile.getOutputsArray());
 		
 		tmp = rand()%10000;
@@ -46,6 +47,7 @@ int main(/*int argc, char **argv*/)
 		std::cout << "calculated : " << obrain.getMax(obrain.getBrainOutput()) << std::endl;
 		std::cout << "real : " << obrain.getMax(teFile.getOutputsArray(tmp)) << std::endl;
 		std::cout << "error = " << obrain.checkError(teFile.getInputsArray(), teFile.getOutputsArray()) << std::endl;
+		std::cout << '\n';
 		
 	}
 	
