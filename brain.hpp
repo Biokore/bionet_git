@@ -43,6 +43,8 @@ public:
 	void brainRetroPropagate(const std::vector<float> &outputsArray);
 	void refitWeights(const std::vector<float> &inputsArray);
 	
+	void setTrainingValues(const float alpha, const int epochs=-1, const int iterations=-1);
+	
 	
 	
 	//// GETTERS PART ////

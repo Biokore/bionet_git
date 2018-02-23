@@ -29,6 +29,8 @@ int main(/*int argc, char **argv*/)
 	obrain.addLayer(HTAN, 40, -0.5);
 	obrain.addLayer(SIGMOID, 10, +0.5);
 	
+	obrain.setTrainingValues(0.08);
+	
 	std::cout << obrain.listBrain() << '\n';
 	
 	std::cout << "base error = " << obrain.checkError(teFile.getInputsArray(), teFile.getOutputsArray()) << std::endl;
@@ -51,7 +53,6 @@ int main(/*int argc, char **argv*/)
 		
 	}
 	
-	tmp = rand()%10000;
 	teFile.printPic(tmp);
 	
 	

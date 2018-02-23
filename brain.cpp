@@ -113,6 +113,24 @@ void brain::refitWeights(const std::vector<float> &inputsArray)
 }
 
 
+void brain::setTrainingValues(const float alpha, const int epochs, const int iterations)
+{
+	
+	this->m_alpha = alpha;
+	
+	if(epochs >= 0)
+	{
+		this->m_epochs = epochs;
+	}
+	
+	if(iterations >=0)
+	{
+		this->m_iterations = iterations;
+	}
+	
+}
+
+
 
 
 
