@@ -4,7 +4,7 @@
 
 
 
-brain::brain(void):
+brain::brain():
 		m_inputsVectorSize(0), m_outputsVectorSize(0), m_layersVectorSize(0), m_fl(0), 
 		m_error(0.0f), m_alpha(0.05f), m_epochs(1), m_iterations(25)
 {
@@ -18,14 +18,25 @@ brain::brain(const int ivs):
 		m_error(0.0f), m_alpha(0.05f), m_epochs(1), m_iterations(25)
 {
 	
-	m_inputsVector.resize(m_inputsVectorSize);
+	m_inputsVector.resize(m_inputsVectorSize);		// useless ; can be removed...
 }
 
 
-brain::~brain(void)
+brain::brain(const brain &src):
+		m_inputsVectorSize(src.getInputsVectorSize()), m_outputsVectorSize(0), m_layersVectorSize(src.getLayerVectorSize()), m_fl(0), 
+		m_error(0.0f), m_alpha(0.05f), m_epochs(1), m_iterations(25)
 {
 	
+	m_inputsVector.resize(m_inputsVectorSize);		// useless ; can be removed...
+	
+	for(int i = 0; i < this->m_inputsVectorSize; i++)
+	{
+		this->addLayer(src.getLayer(i));
+	}
 }
+
+
+// brain::~brain() {}
 
 
 
@@ -54,6 +65,14 @@ void brain::addLayer(const int pft, const int knb, const float bias)
 }
 
 
+void brain::addLayer(const layer src)		// no ref, hard copy it
+{
+	
+	this->m_layersVector.push_back(src);
+	this->m_outputsVectorSize = src.getKernelsVectorSize();
+}
+
+
 void brain::brainPropagate(const std::vector<float> &inputsArray)
 {
 	this->m_layersVector[0].layerPropagate(inputsArray);
@@ -65,7 +84,7 @@ void brain::brainPropagate(const std::vector<float> &inputsArray)
 }
 
 
-void brain::brainRetroPropagate(const std::vector<float> &outputsArray)
+void brain::brainBackPropagate(const std::vector<float> &outputsArray)
 {
 	std::vector<float> error;
 	float t_error(0.0f);

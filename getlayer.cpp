@@ -91,7 +91,7 @@ std::string layer::listLayer() const
 	std::ostringstream oss;
 	
 	oss << "LAYER TYPE = " << this->m_propType << '\n';
-	oss << "INPUTS NUMBER = " << this->m_inputsVectorSize << '\n';
+	oss << "INPUTS NUMBER = " << this->m_inputsVectorSize * m_kernelsVectorSize << '\n';
 	oss << "KERNELS NUMBER = " << this->m_kernelsVectorSize << '\n';
 	oss << "BIAS VALUE = " << this->m_bias << '\n';
 	

@@ -24,12 +24,12 @@ int main(/*int argc, char **argv*/)
 	
 	brain obrain(784);
 	
-	obrain.addLayer(RELU, 180, -0.5);
-	obrain.addLayer(SIGMOID, 80, -0.5);
-	obrain.addLayer(HTAN, 40, -0.5);
+	obrain.addLayer(RELU, 150, +1.0);
+// 	obrain.addLayer(SIGMOID, 80, -0.5);
+	obrain.addLayer(HTAN, 50, -0.5);
 	obrain.addLayer(SIGMOID, 10, +0.5);
 	
-	obrain.setTrainingValues(0.08);
+	obrain.setTrainingValues(0.045);
 	
 	std::cout << obrain.listBrain() << '\n';
 	

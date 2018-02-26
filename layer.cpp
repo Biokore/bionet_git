@@ -45,7 +45,9 @@ layer::~layer()
 
 void layer::initWeights()
 {
-	float w = sqrt(3.0/(float)m_inputsVectorSize);
+	float w = sqrt(3.0/(float)m_kernelsVectorSize);
+// 	float w = (2.4/(float)m_inputsVectorSize);
+	
 	float imax = w;
 	float imin = -w;
 	
@@ -53,7 +55,11 @@ void layer::initWeights()
 	{
 		for(int i = 0; i < m_inputsVectorSize+1; i++)
 		{
-			m_weights[k][i] = ((float)rand() / (RAND_MAX/(imax - imin))) + imin;
+			do
+			{
+				m_weights[k][i] = ((float)rand() / (RAND_MAX/(imax - imin))) + imin;
+			}while(m_weights[k][i] == .0f);
+			
 		}
 	}
 }

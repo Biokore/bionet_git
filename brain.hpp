@@ -33,14 +33,16 @@ private:
 	
 public:
 	
-	brain(void);
+	brain();
 	brain(int ivs);
-	~brain(void);
+	brain(const brain &src);
+	~brain() {};
 	
 	void addLayer(const int pft, const int knb, const float bias);
+	void addLayer(const layer src);		// no ref, hard copy it
 	
 	void brainPropagate(const std::vector<float> &inputsArray);
-	void brainRetroPropagate(const std::vector<float> &outputsArray);
+	void brainBackPropagate(const std::vector<float> &outputsArray);
 	void refitWeights(const std::vector<float> &inputsArray);
 	
 	void setTrainingValues(const float alpha, const int epochs=-1, const int iterations=-1);
@@ -55,6 +57,9 @@ public:
 	std::vector<float> getBrainOutput() const;
 	float getBrainOutput(const int k) const;
 	float getDelta(const int l, const int k) const;
+	int getLayerVectorSize() const;
+	int getInputsVectorSize() const;
+	layer getLayer(const int i) const;
 	
 	
 	

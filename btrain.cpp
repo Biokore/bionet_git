@@ -43,7 +43,7 @@ void brain::trainOnPop(const std::vector<std::vector<float> > &inputPop, const s
 	for(int i = 0; i < pop; i++)
 	{
 		this->brainPropagate(inputPop[i]);
-		this->brainRetroPropagate(outputPop[i]);
+		this->brainBackPropagate(outputPop[i]);
 		this->refitWeights(inputPop[i]);
 	}
 }
