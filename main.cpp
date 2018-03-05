@@ -29,7 +29,7 @@ int main(/*int argc, char **argv*/)
 	obrain.addLayer(HTAN, 50, -0.5);
 	obrain.addLayer(SIGMOID, 10, +0.5);
 	
-	obrain.setTrainingValues(0.045);
+	obrain.setTrainingValues(0.018);
 	
 	std::cout << obrain.listBrain() << '\n';
 	
@@ -39,7 +39,7 @@ int main(/*int argc, char **argv*/)
 	
 	int tmp(0);
 	
-	for(int it = 0; it < 20; it++)
+	for(int it = 0; it < 50; it++)
 	{
 		std::cout << "Iteration : " << it << '\n';
 		obrain.trainOnPop(trFile.getInputsArray(), trFile.getOutputsArray());

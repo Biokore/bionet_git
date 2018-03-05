@@ -129,6 +129,8 @@ void brain::refitWeights(const std::vector<float> &inputsArray)
 	{
 		m_layersVector[l].refitWeights(m_layersVector[l-1].getLayerOutput(), m_alpha);
 	}
+	
+	
 }
 
 
