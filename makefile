@@ -1,31 +1,28 @@
 
-GCCPARAMS = -W -Wall -Wextra -Werror -O3
-LDPARAMS = -lm -O3
-LDSFML = -lsfml-graphics -lsfml-window -lsfml-system
+GCCPARAMS = -W -Wall -Wextra -Werror -O6 -fPIC
+LDPARAMS = -lm -O6 -shared
 
-OBJECTS = layer.o brain.o getlayer.o getbrain.o fsys.o btrain.o main.o
-EXEC = brain.ex
-
+OBJECTS = layer.o layer_get.o nnet.o nnet_train.o nnet_get.o fsys.o
+LIB = libnnet.so
 
 
-all: $(EXEC)
+
+all: $(LIB)
 
 %.o: %.cpp
 	g++ $(GCCPARAMS) -c $^ -o $@
 
 
-$(EXEC): $(OBJECTS)
-	g++ -o $@ $^ $(LDPARAMS)	# $(LDSFML) --> in case of using SFML
+$(LIB): $(OBJECTS)
+	g++ -o $@ $^ $(LDPARAMS)
 
-
-run: $(EXEC)
-	./$<
-	
 clean:
 	rm -rf $(OBJECTS)
 
-remove:
-	rm -rf $(OBJECTS) $(EXEC)
+install:
+	cp *.hpp ./lib/headers/
+	mv libnnet.so ./lib/shared/
+	make clean
 
 
 
