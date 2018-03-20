@@ -50,8 +50,9 @@ public:
 	~layer();
 	
 	void initWeights();
+	void setWeights(const int k, const int w, const float val);
 	
-	void layerPropagate(const std::vector<float> &inputsArray);
+	void propagate(const std::vector<float> &inputsArray);
 	
 	void calculateDelta(const layer &lay);	// ATTENTION : fonction à vérifier / tester
 	void calculateDelta(const std::vector<float> &error);
@@ -69,13 +70,13 @@ public:
 	float getBias()const;
 	float getWeight(const int k, const int i) const;
 	float getAgregValue(const int k) const;
-	float getLayerOutput(const int k) const;
+	float getOutput(const int k) const;
 	float getDelta(const int k) const;
 	
-	std::vector<float> getLayerOutput() const;
+	std::vector<float> getOutput() const;
 	std::vector<float> getDelta() const;
 	
-	std::string listLayer() const;
+	std::string display() const;
 	
 	
 	

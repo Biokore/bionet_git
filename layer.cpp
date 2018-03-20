@@ -65,10 +65,16 @@ void layer::initWeights()
 }
 
 
+void layer::setWeights(const int k, const int w, const float val)
+{
+	this->m_weights[k][w] = val;
+}
 
 
 
-void layer::layerPropagate(const std::vector<float> &inputsArray)
+
+
+void layer::propagate(const std::vector<float> &inputsArray)
 {
 	for(int k = 0; k < m_kernelsVectorSize; k++)
 	{
@@ -87,7 +93,7 @@ void layer::layerPropagate(const std::vector<float> &inputsArray)
 void layer::calculateDelta(const layer &lay)
 {
 	float error(0.0);
-	std::cout << lay.getLayerOutput(1) << std::endl;
+	std::cout << lay.getOutput(1) << std::endl;
 	for(int k = 0; k < m_kernelsVectorSize; k++)
 	{
 		m_delta[k] = (this->*calculateDerivate[m_propType])(m_agregValue[k]);

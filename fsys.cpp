@@ -12,11 +12,12 @@ IDX_class::IDX_class()
 }
 
 
-IDX_class::IDX_class(const std::string &pics, const std::string &labels)
+IDX_class::IDX_class(const std::string &pics, const std::string &labels, const int outputSize)
 {
 	m_type = 0;
 	m_dim = 0;
 	m_popNumber = 0;
+	m_outputSize = outputSize;
 	
 	openFiles(pics, labels);
 	
@@ -80,7 +81,7 @@ bool IDX_class::openFiles(const std::string &pics, const std::string &labels)
 		{
 			m_inputs[i].push_back((float)((int)picsFile.get())/255.0);
 		}
-		m_outputs[i].resize(10, 0.0);
+		m_outputs[i].resize(m_outputSize, 0.0);
 		m_outputs[i][(int)labelsFile.get()] = 1.0;
 	}
 	
@@ -143,6 +144,11 @@ std::vector<std::vector<float> > IDX_class::getOutputsArray(void) const
 {
 	
 	return m_outputs;
+}
+
+int IDX_class::getPopNumber(void) const
+{
+	return this->m_popNumber;
 }
 
 

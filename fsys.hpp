@@ -17,6 +17,7 @@ private:
 	int m_dim;
 	int m_popNumber;
 	int m_inputVectorSize;
+	int m_outputSize;
 	
 	std::vector<int> m_inputDim;
 	
@@ -27,7 +28,7 @@ private:
 public:
 	
 	IDX_class();
-	IDX_class(const std::string &pics, const std::string &labels);
+	IDX_class(const std::string &pics, const std::string &labels, const int outputSize);
 	~IDX_class();
 	
 	bool openFiles(const std::string &pics, const std::string &labels);
@@ -38,6 +39,7 @@ public:
 	std::vector<float> getOutputsArray(int index) const;
 	std::vector<std::vector<float> > getInputsArray(void) const;
 	std::vector<std::vector<float> > getOutputsArray(void) const;
+	int getPopNumber(void) const;
 };
 
 
